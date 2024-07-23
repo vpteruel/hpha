@@ -1,0 +1,10 @@
+{
+    "html.format.enable": true,
+    "html.format.wrapLineLength": 99999,
+    "html.format.wrapAttributes": "auto",
+    "html.format.indentInnerHtml": true,
+    "html.format.preserveNewLines": true,
+    "html.format.maxPreserveNewLines": 2,
+    "html.format.indentHandlebars": false,
+    "html.format.endWithNewline": true
+}
