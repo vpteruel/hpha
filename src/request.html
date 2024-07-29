@@ -66,7 +66,7 @@
                                                                 }
                                                                 else {
                                                                     controlButtonVisibility(index, 'none');
-                                                                    controlVisibility(index, 'none');
+                                                                    controlVisibility(index, 'none', false);
                                                                 }
                                                             }
                                                         });
@@ -75,7 +75,7 @@
                                                             const nextRow = currentRow + 1;
                                                             localStorage.setItem('row-control-' + nextRow, '1');
 
-                                                            controlVisibility(nextRow, 'block');
+                                                            controlVisibility(nextRow, 'block', true);
 
                                                             const currentRowAddEl = document.getElementById('btnAddItem' + currentRow);
                                                             const currentRowDelEl = document.getElementById('btnDelItem' + currentRow);
@@ -93,7 +93,7 @@
                                                             localStorage.setItem('row-control-' + currentRow, '0');
 
                                                             cleanFields(currentRow);
-                                                            controlVisibility(currentRow, 'none');
+                                                            controlVisibility(currentRow, 'none', true);
 
                                                             const currentRowAddEl = document.getElementById('btnAddItem' + currentRow);
                                                             const currentRowDelEl = document.getElementById('btnDelItem' + currentRow);
@@ -113,7 +113,7 @@
                                                             if (delEl) delEl.style.display = display;
                                                         }
 
-                                                        function controlVisibility(row, display) {
+                                                        function controlVisibility(row, display, pageDown) {
                                                             const elements = elementsArr[row];
 
                                                             if (elements) {
@@ -123,7 +123,7 @@
                                                                     if (element) element.style.display = display;
                                                                 });
 
-                                                                window.scrollTo(0, document.body.scrollHeight);
+                                                                if (pageDown === true) window.scrollTo(0, document.body.scrollHeight);
                                                             }
                                                         }
 
