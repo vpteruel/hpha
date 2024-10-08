@@ -42,21 +42,21 @@
                                                     </style>
                                                     <script>
                                                         const elementsArr = [
-                                                            ['field_3_47', 'field_3_343', 'field_3_344', 'field_3_13', 'field_3_340', 'field_3_138'],
-                                                            ['field_3_54', 'field_3_346', 'field_3_347', 'field_3_348', 'field_3_349', 'field_3_139'],
-                                                            ['field_3_60', 'field_3_351', 'field_3_352', 'field_3_353', 'field_3_354', 'field_3_140'],
-                                                            ['field_3_66', 'field_3_355', 'field_3_356', 'field_3_357', 'field_3_358', 'field_3_141'],
-                                                            ['field_3_72', 'field_3_359', 'field_3_360', 'field_3_361', 'field_3_362', 'field_3_142'],
-                                                            ['field_3_78', 'field_3_363', 'field_3_364', 'field_3_365', 'field_3_366', 'field_3_143'],
-                                                            ['field_3_84', 'field_3_367', 'field_3_368', 'field_3_369', 'field_3_370', 'field_3_144'],
-                                                            ['field_3_90', 'field_3_371', 'field_3_372', 'field_3_373', 'field_3_374', 'field_3_145'],
-                                                            ['field_3_96', 'field_3_375', 'field_3_376', 'field_3_377', 'field_3_378', 'field_3_146'],
-                                                            ['field_3_102', 'field_3_379', 'field_3_380', 'field_3_381', 'field_3_382', 'field_3_147'],
-                                                            ['field_3_108', 'field_3_383', 'field_3_384', 'field_3_385', 'field_3_386', 'field_3_148'],
-                                                            ['field_3_114', 'field_3_387', 'field_3_388', 'field_3_389', 'field_3_390', 'field_3_149'],
-                                                            ['field_3_120', 'field_3_391', 'field_3_392', 'field_3_393', 'field_3_394', 'field_3_150'],
-                                                            ['field_3_126', 'field_3_395', 'field_3_396', 'field_3_397', 'field_3_398', 'field_3_151'],
-                                                            ['field_3_132', 'field_3_399', 'field_3_400', 'field_3_401', 'field_3_402', 'field_3_152'],
+                                                            ['field_1_65', 'field_1_34', 'field_1_35', 'field_1_36', 'field_1_71', 'field_1_72', 'field_1_73', 'field_1_97'],
+                                                            ['field_1_66', 'field_1_39', 'field_1_40', 'field_1_74', 'field_1_41', 'field_1_75', 'field_1_76', 'field_1_98'],
+                                                            ['field_1_67', 'field_1_43', 'field_1_44', 'field_1_78', 'field_1_45', 'field_1_81', 'field_1_82', 'field_1_100'],
+                                                            ['field_1_68', 'field_1_47', 'field_1_48', 'field_1_79', 'field_1_49', 'field_1_85', 'field_1_83', 'field_1_101'],
+                                                            ['field_1_69', 'field_1_51', 'field_1_52', 'field_1_80', 'field_1_53', 'field_1_86', 'field_1_84', 'field_1_102'],
+                                                            ['field_1_103', 'field_1_105', 'field_1_106', 'field_1_107', 'field_1_108', 'field_1_109', 'field_1_111', 'field_1_112'],
+                                                            ['field_1_113', 'field_1_114', 'field_1_115', 'field_1_116', 'field_1_117', 'field_1_118', 'field_1_120', 'field_1_121'],
+                                                            ['field_1_124', 'field_1_125', 'field_1_126', 'field_1_127', 'field_1_128', 'field_1_129', 'field_1_131', 'field_1_132'],
+                                                            ['field_1_133', 'field_1_134', 'field_1_135', 'field_1_136', 'field_1_137', 'field_1_138', 'field_1_140', 'field_1_141'],
+                                                            ['field_1_142', 'field_1_143', 'field_1_144', 'field_1_145', 'field_1_146', 'field_1_147', 'field_1_149', 'field_1_150'],
+                                                            ['field_1_151', 'field_1_152', 'field_1_153', 'field_1_154', 'field_1_155', 'field_1_156', 'field_1_158', 'field_1_159'],
+                                                            ['field_1_160', 'field_1_161', 'field_1_162', 'field_1_163', 'field_1_164', 'field_1_165', 'field_1_167', 'field_1_168'],
+                                                            ['field_1_169', 'field_1_170', 'field_1_171', 'field_1_172', 'field_1_173', 'field_1_174', 'field_1_176', 'field_1_177'],
+                                                            ['field_1_178', 'field_1_179', 'field_1_180', 'field_1_181', 'field_1_182', 'field_1_183', 'field_1_185', 'field_1_186'],
+                                                            ['field_1_187', 'field_1_188', 'field_1_189', 'field_1_190', 'field_1_191', 'field_1_192', 'field_1_194', 'field_1_195']
                                                         ];
 
                                                         window.addEventListener('load', function () {
@@ -74,8 +74,7 @@
                                                                     if (delEl) delEl.parentElement.parentElement.parentElement.remove();
                                                                 }
 
-                                                                const elements = elementsArr[index];
-                                                                const rowControl = localStorage.getItem('form-3-row-control-' + index);
+                                                                const rowControl = localStorage.getItem('form-1-row-control-' + index);
 
                                                                 if (rowControl === 'block' || index === 0) {
                                                                     const display = lastButtonVisible > index ? 'none' : 'block';
@@ -92,7 +91,7 @@
                                                         function addItem(currentRow) {
                                                             const nextRow = currentRow + 1;
 
-                                                            controlVisibility(nextRow, 'block', false);
+                                                            controlVisibility(nextRow, 'block', true);
 
                                                             const currentRowAddEl = document.getElementById('btnAddItem' + currentRow);
                                                             const currentRowDelEl = document.getElementById('btnDelItem' + currentRow);
@@ -109,7 +108,7 @@
                                                             const prevRow = currentRow - 1;
 
                                                             cleanFields(currentRow);
-                                                            controlVisibility(currentRow, 'none', false);
+                                                            controlVisibility(currentRow, 'none', true);
 
                                                             const currentRowAddEl = document.getElementById('btnAddItem' + currentRow);
                                                             const currentRowDelEl = document.getElementById('btnDelItem' + currentRow);
@@ -131,7 +130,7 @@
 
                                                         function controlVisibility(row, display, pageDown) {
                                                             const elements = elementsArr[row];
-                                                            localStorage.setItem('form-3-row-control-' + row, display);
+                                                            localStorage.setItem('form-1-row-control-' + row, display);
 
                                                             if (elements) {
                                                                 elements.forEach(elementStr => {
@@ -161,6 +160,16 @@
                                                         }
                                                     </script>
                                                 </div>
+                                                
+                                                <select name="input_89" id="input_1_89" class="large gfield_select tomselected ts-hidden-accessible" aria-required="true" aria-invalid="false" tabindex="-1">
+                                                    <option value="" selected="selected"></option>
+                                                    <option value="Stratford">Stratford</option>
+                                                    <option value="Seaforth">Seaforth</option>
+                                                    <option value="St. Marys">St. Marys</option>
+                                                    <option value="Clinton">Clinton</option>
+                                                    <option value="AMGH">AMGH</option>
+                                                </select>
+
                                                 <div id="field_1_65" class="gfield gfield--type-section gfield--input-type-section gsection field_sublabel_above gfield--no-description field_description_above field_validation_below gfield_visibility_visible" data-js-reload="field_1_65">
                                                     <h3 class="gsection_title">Item 1</h3>
                                                 </div>
