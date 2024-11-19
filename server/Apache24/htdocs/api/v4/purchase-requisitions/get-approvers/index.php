@@ -18,8 +18,7 @@ try {
 
 // Endpoint
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (isset($_GET['email'])
-        && isset($_GET['function-centre-number'])) {
+    if (isset($_GET['email']) && isset($_GET['function-centre-number'])) {
         $email = $_GET['email'];
         if ($email === 'vinicius.teruel@[domain]') {
             echo json_encode((object)array(
@@ -29,13 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 'delegate_4' => null,
                 'delegate_5' => null,
                 'manager' => 4,
-                'manager_email' => '',
                 'director' => 4,
                 'vp_department' => 4,
                 'vp_cfe' => 4,
                 'ceo' => 4,
                 'mm_requisition' => 4, // fixed
-                'is_delegate' => false ? 'yes' : 'no'
+                'is_current_user_delegate' => false ? 'yes' : 'no',
+                'is_current_user_manager' => false ? 'yes' : 'no',
+                'is_current_user_director' => false ? 'yes' : 'no',
+                'is_current_user_vp_department' => false ? 'yes' : 'no',
+                'is_current_user_vp_cfe' => false ? 'yes' : 'no',
+                'is_current_user_ceo' => false ? 'yes' : 'no'
             ));
         } else {
             $function_centre_number = $_GET['function-centre-number'];
@@ -47,13 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $result->delegate_3 = $department_roles['delegate_3_id'];
                 $result->delegate_4 = $department_roles['delegate_4_id'];
                 $result->delegate_5 = $department_roles['delegate_5_id'];
-                $result->manager = $department_roles['manager'];
-                $result->director = $department_roles['director'];
-                $result->vp_department = $department_roles['vp_department'];
-                $result->vp_cfe = $department_roles['vp_cfe'];
-                $result->ceo = $department_roles['ceo'];
+                $result->manager = $department_roles['manager_id'];
+                $result->director = $department_roles['director_id'];
+                $result->vp_department = $department_roles['vp_department_id'];
+                $result->vp_cfe = $department_roles['vp_cfe_id'];
+                $result->ceo = $department_roles['ceo_id'];
                 $result->mm_requisition = 2; // fixed
-                $result->is_delegate = is_delegate($email, $department_roles); 
+                $result->is_current_user_delegate = is_delegate($email, $department_roles);
+                $result->is_current_user_manager = ($email === $department_roles['manager_email']) ? 'yes' : 'no';
+                $result->is_current_user_director = ($email === $department_roles['director_email']) ? 'yes' : 'no';
+                $result->is_current_user_vp_department = ($email === $department_roles['vp_department_email']) ? 'yes' : 'no';
+                $result->is_current_user_vp_cfe = ($email === $department_roles['vp_cfe_email']) ? 'yes' : 'no';
+                $result->is_current_user_ceo = ($email === $department_roles['ceo_email']) ? 'yes' : 'no';
                 echo json_encode($result);
             } else {
                 http_response_code(404);
@@ -80,11 +88,16 @@ SELECT
     d.delegate_4_email AS delegate_4_email,
     d.delegate_5_wp_user_id AS delegate_5_id,
     d.delegate_5_email AS delegate_5_email,
-    d.manager_wp_user_id AS manager,
-    d.director_wp_user_id AS director,
-    d.vp_department_wp_user_id AS vp_department,
-    d.vp_cfe_wp_user_id AS vp_cfe,
-    d.ceo_wp_user_id AS ceo
+    d.manager_wp_user_id AS manager_id,
+    d.manager_email AS manager_email,
+    d.director_wp_user_id AS director_id,
+    d.director_email AS director_email,
+    d.vp_department_wp_user_id AS vp_department_id,
+    d.vp_department_email AS vp_department_email,
+    d.vp_cfe_wp_user_id AS vp_cfe_id,
+    d.vp_cfe_email AS vp_cfe_email,
+    d.ceo_wp_user_id AS ceo_id,
+    d.ceo_email AS ceo_email
 FROM 
     hpha_department_roles_view d
 WHERE 

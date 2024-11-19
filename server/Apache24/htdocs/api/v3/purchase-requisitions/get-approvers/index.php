@@ -18,8 +18,7 @@ try {
 
 // Endpoint
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (isset($_GET['email'])
-        && isset($_GET['function-centre-number'])) {
+    if (isset($_GET['email']) && isset($_GET['function-centre-number'])) {
         $email = $_GET['email'];
         if ($email === 'vinicius.teruel@[domain]') {
             echo json_encode((object)array(
@@ -34,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 'vp_cfe' => 4,
                 'ceo' => 4,
                 'mm_requisition' => 4, // fixed
-                'is_current_user_delegate' => true ? 'yes' : 'no',
+                'is_current_user_delegate' => false ? 'yes' : 'no',
                 'is_current_user_manager' => false ? 'yes' : 'no'
             ));
         } else {
@@ -58,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 echo json_encode($result);
             } else {
                 http_response_code(404);
-                echo json_encode(['error' => 'Department roles found']);
+                echo json_encode(['error' => 'Department roles not found']);
             }
         }
     } else {
