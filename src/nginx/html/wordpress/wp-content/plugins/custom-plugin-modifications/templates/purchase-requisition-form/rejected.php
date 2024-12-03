@@ -65,6 +65,10 @@
         <div class="section-title">Basic Information:</div>
         <table class="details-table">
             <tr>
+                <th>PR#</th>
+                <td>{entry_id}</td>
+            </tr>
+            <tr>
                 <th>Date</th>
                 <td>{Date:6}</td>
             </tr>

@@ -84,6 +84,10 @@
         <div class="section-title">Basic Information:</div>
         <table class="details-table">
             <tr>
+                <th>PR#</th>
+                <td>{entry_id}</td>
+            </tr>
+            <tr>
                 <th>Date</th>
                 <td>{Date:6}</td>
             </tr>
@@ -150,7 +154,7 @@
         
         $value = rgar( $entry, $field->id );
         
-        if ( $field->id == 42 && $value > 0 ) { ?>
+        if ( $field->id == 42 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>2</td>
                 <td>{item2Qty:39}</td>
@@ -163,7 +167,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 46 && $value > 0 ) { ?>
+        if ( $field->id == 46 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>3</td>
                 <td>{item3Qty:43}</td>
@@ -176,7 +180,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 50 && $value > 0 ) { ?>
+        if ( $field->id == 50 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>4</td>
                 <td>{item4Qty:47}</td>
@@ -189,7 +193,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 54 && $value > 0 ) { ?>
+        if ( $field->id == 54 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>5</td>
                 <td>{item5Qty:51}</td>
@@ -202,7 +206,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 110 && $value > 0 ) { ?>
+        if ( $field->id == 110 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>6</td>
                 <td>{item6Qty:105}</td>
@@ -215,7 +219,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 119 && $value > 0 ) { ?>
+        if ( $field->id == 119 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>7</td>
                 <td>{item7Qty:114}</td>
@@ -228,7 +232,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 130 && $value > 0 ) { ?>
+        if ( $field->id == 130 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>8</td>
                 <td>{item8Qty:125}</td>
@@ -241,7 +245,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 139 && $value > 0 ) { ?>
+        if ( $field->id == 139 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>9</td>
                 <td>{item9Qty:134}</td>
@@ -254,7 +258,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 148 && $value > 0 ) { ?>
+        if ( $field->id == 148 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>10</td>
                 <td>{item10Qty:143}</td>
@@ -267,7 +271,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 157 && $value > 0 ) { ?>
+        if ( $field->id == 157 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>11</td>
                 <td>{item11Qty:152}</td>
@@ -280,7 +284,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 166 && $value > 0 ) { ?>
+        if ( $field->id == 166 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>12</td>
                 <td>{item12Qty:161}</td>
@@ -293,7 +297,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 175 && $value > 0 ) { ?>
+        if ( $field->id == 175 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>13</td>
                 <td>{item13Qty:170}</td>
@@ -306,7 +310,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 184 && $value > 0 ) { ?>
+        if ( $field->id == 184 && $value >= 0 ) { ?>
             <tr class="even">
                 <td>14</td>
                 <td>{item14Qty:179}</td>
@@ -319,7 +323,7 @@
             </tr>
         <?php }
 
-        if ( $field->id == 193 && $value > 0 ) { ?>
+        if ( $field->id == 193 && $value >= 0 ) { ?>
             <tr class="odd">
                 <td>15</td>
                 <td>{item15Qty:188}</td>
