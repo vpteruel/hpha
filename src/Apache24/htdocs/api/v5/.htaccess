@@ -1,0 +1,11 @@
+# Additional security and optimization settings
+# Disable directory browsing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^(\.htaccess|\.htpasswd|debug\.log)$">
+    Require all denied
+</FilesMatch>
+
+# Default pages
+DirectoryIndex index.php
