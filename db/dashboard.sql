@@ -34,6 +34,19 @@ WHERE
 GROUP BY site
 ORDER BY entry_sum DESC;
 
+-- count and sum per site
+SELECT
+    em1.meta_value AS site,
+    COUNT(DISTINCT em2.entry_id) AS entry_count,
+    SUM(CAST(em2.meta_value AS DECIMAL(10, 2))) AS entry_sum
+FROM wp_gf_entry_meta em1
+JOIN wp_gf_entry_meta em2 ON em1.entry_id = em2.entry_id
+WHERE
+    em1.form_id = 1 AND em1.meta_key = '89'
+    AND em2.form_id = 1 AND em2.meta_key = '4'
+GROUP BY site
+ORDER BY entry_count DESC;
+
 -- qty per type
 SELECT
     t.meta_value AS type,
@@ -85,7 +98,7 @@ WHERE
     em1.form_id = 1 AND em1.meta_key = '196'   -- department code
     AND em2.form_id = 1 AND em2.meta_key = '4' -- total sum
 GROUP BY department_code, department_name
-ORDER BY entry_sum DESC;
+ORDER BY entry_count DESC;
 
 -- avg value per department
 SELECT 
@@ -101,7 +114,7 @@ WHERE
     em1.form_id = 1 AND em1.meta_key = '196'   -- department code
     AND em2.form_id = 1 AND em2.meta_key = '4' -- total sum
 GROUP BY department_code, department_name
-ORDER BY entry_avg DESC;
+ORDER BY entry_count DESC;
 
 -- count, sum, and avg value per department
 SELECT 

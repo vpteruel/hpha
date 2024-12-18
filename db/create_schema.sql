@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS hpha_users;
 DROP TABLE IF EXISTS hpha_roles;
 DROP VIEW IF EXISTS hpha_departments_users_summary_view;
 DROP VIEW IF EXISTS hpha_department_roles_view;
+DROP VIEW IF EXISTS hpha_users_dropdown_view;
+DROP VIEW IF EXISTS hpha_departments_users_dropdown_view;
 
 CREATE TABLE hpha_departments (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -78,14 +80,6 @@ CREATE OR REPLACE VIEW hpha_departments_users_summary_view AS
     JOIN hpha_users us ON dur.user_id = us.id;
 
 -- view to get all roles in a department
-WITH role_ids AS (
-    SELECT 
-        id,
-        name
-    FROM hpha_roles
-    WHERE name IN ('Delegate 1', 'Delegate 2', 'Delegate 3', 'Delegate 4', 'Delegate 5', 
-                   'Manager', 'Director', 'VP for Department', 'VP / CFE', 'CEO')
-)
 CREATE OR REPLACE VIEW hpha_department_roles_view AS
     SELECT 
         d.name AS department_name,
@@ -109,29 +103,33 @@ CREATE OR REPLACE VIEW hpha_department_roles_view AS
         vp_cfe.wp_user_id AS vp_cfe_wp_user_id,
         vp_cfe.email AS vp_cfe_email,
         ceo.wp_user_id AS ceo_wp_user_id,
-        ceo.email AS ceo_email
+        ceo.email AS ceo_email,
+        board_chair.wp_user_id AS board_chair_wp_user_id,
+        board_chair.email AS board_chair_email
     FROM 
         hpha_departments d
-    LEFT JOIN hpha_departments_users_roles du1 ON d.id = du1.department_id AND du1.role_id = (SELECT id FROM role_ids WHERE name = 'Delegate 1')
+    LEFT JOIN hpha_departments_users_roles du1 ON d.id = du1.department_id AND du1.role_id = (SELECT id FROM hpha_roles WHERE name = 'Delegate 1')
     LEFT JOIN hpha_users delegate1 ON du1.user_id = delegate1.id
-    LEFT JOIN hpha_departments_users_roles du2 ON d.id = du2.department_id AND du2.role_id = (SELECT id FROM role_ids WHERE name = 'Delegate 2')
+    LEFT JOIN hpha_departments_users_roles du2 ON d.id = du2.department_id AND du2.role_id = (SELECT id FROM hpha_roles WHERE name = 'Delegate 2')
     LEFT JOIN hpha_users delegate2 ON du2.user_id = delegate2.id
-    LEFT JOIN hpha_departments_users_roles du3 ON d.id = du3.department_id AND du3.role_id = (SELECT id FROM role_ids WHERE name = 'Delegate 3')
+    LEFT JOIN hpha_departments_users_roles du3 ON d.id = du3.department_id AND du3.role_id = (SELECT id FROM hpha_roles WHERE name = 'Delegate 3')
     LEFT JOIN hpha_users delegate3 ON du3.user_id = delegate3.id
-    LEFT JOIN hpha_departments_users_roles du4 ON d.id = du4.department_id AND du4.role_id = (SELECT id FROM role_ids WHERE name = 'Delegate 4')
+    LEFT JOIN hpha_departments_users_roles du4 ON d.id = du4.department_id AND du4.role_id = (SELECT id FROM hpha_roles WHERE name = 'Delegate 4')
     LEFT JOIN hpha_users delegate4 ON du4.user_id = delegate4.id
-    LEFT JOIN hpha_departments_users_roles du5 ON d.id = du5.department_id AND du5.role_id = (SELECT id FROM role_ids WHERE name = 'Delegate 5')
+    LEFT JOIN hpha_departments_users_roles du5 ON d.id = du5.department_id AND du5.role_id = (SELECT id FROM hpha_roles WHERE name = 'Delegate 5')
     LEFT JOIN hpha_users delegate5 ON du5.user_id = delegate5.id
-    LEFT JOIN hpha_departments_users_roles dum ON d.id = dum.department_id AND dum.role_id = (SELECT id FROM role_ids WHERE name = 'Manager')
+    LEFT JOIN hpha_departments_users_roles dum ON d.id = dum.department_id AND dum.role_id = (SELECT id FROM hpha_roles WHERE name = 'Manager')
     LEFT JOIN hpha_users manager ON dum.user_id = manager.id
-    LEFT JOIN hpha_departments_users_roles dud ON d.id = dud.department_id AND dud.role_id = (SELECT id FROM role_ids WHERE name = 'Director')
+    LEFT JOIN hpha_departments_users_roles dud ON d.id = dud.department_id AND dud.role_id = (SELECT id FROM hpha_roles WHERE name = 'Director')
     LEFT JOIN hpha_users director ON dud.user_id = director.id
-    LEFT JOIN hpha_departments_users_roles duvpdep ON d.id = duvpdep.department_id AND duvpdep.role_id = (SELECT id FROM role_ids WHERE name = 'VP for Department')
+    LEFT JOIN hpha_departments_users_roles duvpdep ON d.id = duvpdep.department_id AND duvpdep.role_id = (SELECT id FROM hpha_roles WHERE name = 'VP for Department')
     LEFT JOIN hpha_users vp_department ON duvpdep.user_id = vp_department.id
-    LEFT JOIN hpha_departments_users_roles duvpcfe ON d.id = duvpcfe.department_id AND duvpcfe.role_id = (SELECT id FROM role_ids WHERE name = 'VP / CFE')
+    LEFT JOIN hpha_departments_users_roles duvpcfe ON d.id = duvpcfe.department_id AND duvpcfe.role_id = (SELECT id FROM hpha_roles WHERE name = 'VP / CFE')
     LEFT JOIN hpha_users vp_cfe ON duvpcfe.user_id = vp_cfe.id
-    LEFT JOIN hpha_departments_users_roles duceo ON d.id = duceo.department_id AND duceo.role_id = (SELECT id FROM role_ids WHERE name = 'CEO')
-    LEFT JOIN hpha_users ceo ON duceo.user_id = ceo.id;
+    LEFT JOIN hpha_departments_users_roles duceo ON d.id = duceo.department_id AND duceo.role_id = (SELECT id FROM hpha_roles WHERE name = 'CEO')
+    LEFT JOIN hpha_users ceo ON duceo.user_id = ceo.id
+    LEFT JOIN hpha_departments_users_roles dubc ON d.id = dubc.department_id AND dubc.role_id = (SELECT id FROM hpha_roles WHERE name = 'Board Chair')
+    LEFT JOIN hpha_users board_chair ON dubc.user_id = board_chair.id;
 
 CREATE OR REPLACE VIEW hpha_users_dropdown_view AS
     SELECT 
