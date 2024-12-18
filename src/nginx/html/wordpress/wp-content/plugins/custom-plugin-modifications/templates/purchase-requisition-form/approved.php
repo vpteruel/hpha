@@ -337,9 +337,19 @@
         <?php }
     }
 ?>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TOTAL SUM</td>
+            <td>{Total sum:4}</td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
-        
+
 <div class="container">
     <div class="content">
         <div class="section-title">Approval Timeline:</div>
